@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/02/21 21:12:52.000.247,=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/03/06 17:22:54.000.337,=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/04/21 19:05:49.000.112,=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/04/21 19:06:27.000.536,C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\ACPDV.dproj=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/04/21 19:08:30.000.500,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\01- Estruturando o Projeto\src\view\ACPDV.View.Principal.pas=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/04/21 19:08:30.000.500,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\01- Estruturando o Projeto\src\view\ACPDV.View.Principal.dfm=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/04/21 19:08:52.000.708,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\01- Estruturando o Projeto\ACPDV.dproj=C:\Users\pcdec\OneDrive\Documentos\Embarcadero\Studio\Projects\ACPDV.dproj</Transaction>
+    <Transaction>2023/04/22 11:56:28.000.290,=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.pas</Transaction>
+    <Transaction>2023/04/22 11:57:22.000.993,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.dfm=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\src\view\ACPDV.View.Page.Login.dfm</Transaction>
+    <Transaction>2023/04/22 11:57:22.000.993,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.pas=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\src\view\ACPDV.View.Page.Login.pas</Transaction>
+    <Transaction>2023/04/22 12:48:02.000.488,=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.pas</Transaction>
+    <Transaction>2023/04/22 12:50:02.000.968,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.dfm=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\src\view\componente\ACPDV.View.Componente.Transparencia.dfm</Transaction>
+    <Transaction>2023/04/22 12:50:02.000.968,G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\Unit1.pas=G:\Desenvolvimento\Delphi\Academia do Codigo\PDV\02- Criando Tela de Login\src\view\componente\ACPDV.View.Componente.Transparencia.pas</Transaction>
+  </Transactions>
+</BorlandProject>
