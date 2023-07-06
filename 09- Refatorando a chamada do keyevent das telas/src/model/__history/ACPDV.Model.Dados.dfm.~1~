@@ -1,0 +1,5 @@
+object dmDados: TdmDados
+  OldCreateOrder = False
+  Height = 296
+  Width = 369
+end
