@@ -1,0 +1,110 @@
+unit ACPDV.Utils.trataExceptions;
+
+interface
+
+uses
+  Vcl.Forms,
+  System.SysUtils,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Imaging.jpeg;
+
+type
+  TException = class
+    private
+      FLogFile : string;
+      FApplicationPath : string;
+      FLogPath : string;
+      FLogImages : string;
+
+      procedure GravarImagemFormulario(const aNomeArquivo : string; aFormulario : tForm);
+      procedure GravarLog(aInfo, aMensagem : string);
+      procedure TrataException(Sender : TObject; E : Exception);
+
+    public
+      constructor Create;
+  end;
+
+implementation
+
+{ TException }
+
+constructor TException.Create;
+begin
+  FApplicationPath := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+  FLogPath := IncludeTrailingPathDelimiter(FApplicationPath + 'LOGS');
+  FLogImages := IncludeTrailingPathDelimiter(FLogPath + 'IMAGES');
+  FLogFile := FLogPath + ExtractFileName(ChangeFileExt(ParamStr(0), '')) + '.log';
+
+  ForceDirectories(FLogPath);
+  ForceDirectories(FLogImages);
+
+  Application.OnException := TrataException;
+end;
+
+procedure TException.GravarImagemFormulario(const aNomeArquivo : string;
+  aFormulario: tForm);
+var
+  lBitmap : tBitmap;
+  lJpg : tJpegImage;
+begin
+  lBitmap := TBitmap.Create;
+  lJpg := TJPEGImage.Create;
+
+  try
+    lBitmap.Assign(aFormulario.GetFormImage);
+    lJpg.Assign(lBitmap);
+    lJpg.SaveToFile(Format('%s\%s.jpg', [FLogFile, aNomeArquivo]));
+  finally
+    lBitmap.DisposeOf;
+    lJpg.DisposeOf;
+  end;
+end;
+
+procedure TException.GravarLog(aInfo, aMensagem: string);
+var
+  lArq : TextFile;
+begin
+  AssignFile(lArq, FLogFile);
+  if not FileExists(FLogFile) then
+    Rewrite(lArq)
+  else
+    Append(lArq);
+
+  Writeln(lArq, aInfo + aMensagem);
+  CloseFile(lArq);
+end;
+
+procedure TException.TrataException(Sender: TObject; E: Exception);
+var
+  lDataHora : string;
+begin
+  lDataHora := FormatDateTime('ddmmyyhhmmss', Now);
+  GravarLog('[Data/hora........] ', FormatDateTime('dd/mm/yyyy hh:mm:ss', now));
+  GravarLog('[Mensagem.........] ', E.Message);
+  GravarLog('[Classe Exceção...] ', E.ClassName);
+
+  if (TComponent(Sender) is TForm) then
+    GravarLog('[Formulário.......] ', TForm(Sender).Name)
+  else
+    GravarLog('[Formulário.......] ', TForm(TComponent(Sender).Owner).Name);
+
+  GravarLog('[Unit.............] ', Sender.UnitName);
+  GravarLog('[Componente Visual] ', Screen.ActiveControl.Name);
+  GravarLog('', StringOfChar('-', 70));
+  GravarLog('', '');
+
+
+end;
+
+
+var
+  MinhasExcecoes : TException;
+
+initialization
+  MinhasExcecoes := TException.Create;
+
+finalization
+  FreeAndNil(MinhasExcecoes);
+
+end.

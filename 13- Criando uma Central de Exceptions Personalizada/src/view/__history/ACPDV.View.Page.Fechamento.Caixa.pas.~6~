@@ -1,0 +1,130 @@
+unit ACPDV.View.Page.Fechamento.Caixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls,
+  ACPDV.Model.Caixa;
+
+type
+  TpageFechamentoCaixa = class(TForm)
+    pnlContainer: TPanel;
+    pnlTitulo: TPanel;
+    pnl1: TPanel;
+    pnlPrincipal: TPanel;
+    pnl2: TPanel;
+    pnl3: TPanel;
+    shp1: TShape;
+    btn1: TSpeedButton;
+    pnl4: TPanel;
+    pnl5: TPanel;
+    pnl6: TPanel;
+    cmb1: TComboBox;
+    edt1: TEdit;
+    pnl7: TPanel;
+    pnl8: TPanel;
+    pnl9: TPanel;
+    shp2: TShape;
+    shp3: TShape;
+    btnCancelar: TSpeedButton;
+    btnConfirmar: TSpeedButton;
+    pnl10: TPanel;
+    ListBox1: TListBox;
+    procedure FormShow(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnAbrirCaixaClick(Sender: TObject);
+  private
+    FProc : TProc<TCaixa>;
+    procedure Responsive;
+
+  public
+    { Public declarations }
+    class function New(AOwner : TComponent) : TpageFechamentoCaixa;
+    function Embed(Value : TWinControl) : TpageFechamentoCaixa;
+    function Alinhamento(Value : TAlign) : TpageFechamentoCaixa;
+    function Informacoes(Value : TProc<TCaixa>) : TpageFechamentoCaixa;
+  end;
+
+
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+function TpageFechamentoCaixa.Alinhamento(Value: TAlign): TpageFechamentoCaixa;
+begin
+  Result := Self;
+  Self.Align := Value;
+end;
+
+procedure TpageFechamentoCaixa.btnAbrirCaixaClick(Sender: TObject);
+var
+	lCaixa : TCaixa;
+  lTurno : TTurno;
+  LData  : TDateTime;
+begin
+	LData := Now;
+  lCaixa := TCaixa.New;
+
+  try
+  	lCaixa.Id := 1;
+    lCaixa.Caixa := 1;
+    lCaixa.Turno := lTurno.RetornaTurno(LData);
+    lCaixa.Aberto := True;
+    lCaixa.DataHoraAbertura := LData;
+    lCaixa.SaldoInicial := StrToCurr(StringReplace(edtValorSuprimento.Text, 'R$ ', '', [rfReplaceAll, rfIgnoreCase]));
+
+    FProc(lCaixa);
+  finally
+    lCaixa.DisposeOf;
+    Self.Close;
+  end;
+end;
+
+function TpageFechamentoCaixa.Embed(Value: TWinControl): TpageFechamentoCaixa;
+begin
+  Result := Self;
+  Self.Parent := Value;
+end;
+
+procedure TpageFechamentoCaixa.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_ESCAPE then
+    Self.Close;
+
+end;
+
+procedure TpageFechamentoCaixa.FormResize(Sender: TObject);
+begin
+  Responsive;
+end;
+
+procedure TpageFechamentoCaixa.FormShow(Sender: TObject);
+begin
+  Responsive;
+end;
+
+function TpageFechamentoCaixa.Informacoes(Value: TProc<TCaixa>): TpageFechamentoCaixa;
+begin
+	Result := Self;
+  FProc := Value;
+end;
+
+class function TpageFechamentoCaixa.New(AOwner: TComponent): TpageFechamentoCaixa;
+begin
+  Result := Self.Create(AOwner);
+end;
+
+procedure TpageFechamentoCaixa.Responsive;
+begin
+  pnlContainer.Top := Round((Self.Height - pnlContainer.Height) / 2);
+  pnlContainer.Left := Round((Self.Width - pnlContainer.Width) / 2);
+
+end;
+
+end.

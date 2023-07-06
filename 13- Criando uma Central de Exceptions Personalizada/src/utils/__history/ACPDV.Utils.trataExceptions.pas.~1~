@@ -1,0 +1,21 @@
+unit ACPDV.Utils.trataExceptions;
+
+interface
+
+type
+  TException = class
+    private
+    public
+      constructor Create;
+  end;
+
+implementation
+
+{ TException }
+
+constructor TException.Create;
+begin
+
+end;
+
+end.

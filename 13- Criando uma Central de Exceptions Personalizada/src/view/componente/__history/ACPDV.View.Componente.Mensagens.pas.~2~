@@ -1,0 +1,54 @@
+unit ACPDV.View.Componente.Mensagens;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TTipoMensagem = (INFORMACAO, ERRO, ALERTA);
+
+  TpageMensagem = class(TForm)
+    pnlContainer: TPanel;
+    pnlTitulo: TPanel;
+    Image: TImage;
+    Panel1: TPanel;
+    pnlCancelar: TPanel;
+    shapeCancelar: TShape;
+    SpeedButton1: TSpeedButton;
+    pnlConfirmar: TPanel;
+    shapeConfirmar: TShape;
+    SpeedButton2: TSpeedButton;
+    pnlOk: TPanel;
+    shapeOk: TShape;
+    SpeedButton3: TSpeedButton;
+    pnlMensagem: TPanel;
+    lblMensagem: TLabel;
+  private
+    { Private declarations }
+    procedure Responsive;
+  public
+    { Public declarations }
+  end;
+
+var
+  pageMensagem: TpageMensagem;
+
+implementation
+
+{$R *.dfm}
+
+{ TpageMensagem }
+
+procedure TpageMensagem.Responsive;
+var
+  lHeight, lWidth : Integer;
+begin
+  lHeight := Round((Self.Height - pnlContainer.Height) / 2);
+  lWidth := Round((Self.Width - pnlContainer.Width) / 2);
+
+  pnlContainer.Margins.Left
+end;
+
+end.
