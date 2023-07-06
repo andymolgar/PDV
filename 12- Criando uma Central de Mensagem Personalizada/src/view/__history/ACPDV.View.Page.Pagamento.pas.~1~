@@ -1,0 +1,167 @@
+unit ACPDV.View.Page.PagamentosDefault;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, ACPDV.Utils, ACPDV.View.Page.Cartao, ACPDV.View.Page.Pix,
+  ACPDV.View.Page.Dinheiro;
+
+type
+  TpagePagamentosDefault = class(TForm)
+    pnlContainer: TPanel;
+    pnlInformacoes: TPanel;
+    pnlInformarCpf: TPanel;
+    pnlInfoVenda: TPanel;
+    shpLineSeparator: TShape;
+    pnlEdit: TPanel;
+    imgEdit: TImage;
+    lblEdit: TLabel;
+    pnlTotalVenda: TPanel;
+    lblTitleTotalVenda: TLabel;
+    lblTotalVenda: TLabel;
+    pnlDesconto: TPanel;
+    lblTitleDesconto: TLabel;
+    edtDesconto: TEdit;
+    pnlAcrescimo: TPanel;
+    lblTitleAcrescimo: TLabel;
+    edtAcrescimo: TEdit;
+    pnlTotalReceber: TPanel;
+    lblTitleTotalReceber: TLabel;
+    lblTotalReceber: TLabel;
+    pnlTotalRecebido: TPanel;
+    lblTitleTotalRecebido: TLabel;
+    edtRecebido: TEdit;
+    pnlSaldoRestante: TPanel;
+    lblTitleSaldoRestante: TLabel;
+    lblSaldoRestante: TLabel;
+    pnlTroco: TPanel;
+    lblTitleTroco: TLabel;
+    lblTroco: TLabel;
+    pnlCancelarRetornar: TPanel;
+    pnlformasPagamento: TPanel;
+    pnl1: TPanel;
+    pnl2: TPanel;
+    shp1: TShape;
+    pnl3: TPanel;
+    pnl4: TPanel;
+    pnl5: TPanel;
+    pnlListaPagamentos: TPanel;
+    pnlCartao: TPanel;
+    shapeCartao: TShape;
+    pnlContainerCartao: TPanel;
+    pnlTitleCartao: TPanel;
+    pnlImgCartao: TPanel;
+    imgCartao: TImage;
+    pnlPix: TPanel;
+    shpPix: TShape;
+    pnlContainerPix: TPanel;
+    pnlTitlePix: TPanel;
+    pnl8: TPanel;
+    imgPix: TImage;
+    pnlDinheiro: TPanel;
+    shpDinheiro: TShape;
+    pnlContainerDinheiro: TPanel;
+    pnlTitleDinheiro: TPanel;
+    pnl9: TPanel;
+    imgDinheiro: TImage;
+    pnlContainerPg: TPanel;
+    Panel1: TPanel;
+    Shape1: TShape;
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormResize(Sender: TObject);
+  private
+    { Private declarations }
+    procedure Responsive;
+    procedure setClick(Shape : TShape; Panel : TPanel);
+  public
+    { Public declarations }
+    class function New(AOWner : TComponent) : TpagePagamentosDefault;
+    function Embed(Value : TPanel) : TpagePagamentosDefault;
+  end;
+
+var
+  pagePagamentosDefault: TpagePagamentosDefault;
+
+implementation
+
+{$R *.dfm}
+
+{ TpagePagamentosDefault }
+
+function TpagePagamentosDefault.Embed(Value: TPanel): TpagePagamentosDefault;
+begin
+  Result := Self;
+  Self.AddObject(Value);
+end;
+
+procedure TpagePagamentosDefault.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  case Key of
+    VK_ESCAPE : Self.RemoveObject;
+    VK_F5 :
+    begin
+      TFrameCartao
+        .New(self)
+        .Alinhamento(alClient)
+        .Embed(pnlContainerPg);
+
+      setClick(shapeCartao, pnlListaPagamentos);
+    end;
+    VK_F6 :
+    begin
+      TFramePix
+        .New(Self)
+        .Alinhamento(alClient)
+        .Embed(pnlContainerPg);
+
+      setClick(shpPix, pnlListaPagamentos);
+    end;
+    VK_F7 :
+    begin
+      TframeDinheiro
+        .New(Self)
+        .Alinhamento(alClient)
+        .Embed(pnlContainerPg);
+
+      setClick(shpDinheiro, pnlListaPagamentos);
+    end;
+  end;
+end;
+
+procedure TpagePagamentosDefault.FormResize(Sender: TObject);
+begin
+  Responsive;
+end;
+
+class function TpagePagamentosDefault.New(
+  AOWner: TComponent): TpagePagamentosDefault;
+begin
+  Result := Self.Create(AOWner);
+end;
+
+procedure TpagePagamentosDefault.Responsive;
+begin
+  pnlContainer.Top := Round((Self.Height - pnlContainer.Height)/2);
+  pnlContainer.Left := Round((Self.Width - pnlContainer.Width)/2);
+end;
+
+procedure TpagePagamentosDefault.setClick(Shape: TShape; Panel: TPanel);
+begin
+  shapeCartao.Pen.Style := psClear;
+  shpPix.Pen.Style      := psClear;
+  shpDinheiro.Pen.Style := psClear;
+  shapeCartao.Pen.Color := clWhite;
+  shpPix.Pen.Color := clWhite;
+  shpDinheiro.Pen.Color := clWhite;
+
+  Shape.Pen.Style := psSolid;
+  Shape.Pen.Color := $0014B4E1;
+
+  Panel.Visible := False;
+  Panel.Visible := True;
+end;
+
+end.

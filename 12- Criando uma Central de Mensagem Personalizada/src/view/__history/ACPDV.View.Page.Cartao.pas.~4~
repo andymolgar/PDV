@@ -1,0 +1,113 @@
+unit ACPDV.View.Page.Cartao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TframeCartao = class(TFrame)
+    pnlContainer: TPanel;
+    pnlTipoCartao: TPanel;
+    pnlDebito: TPanel;
+    shapeDebito: TShape;
+    pnlContainerDebito: TPanel;
+    pnlTitleDebito: TPanel;
+    pnlImgDebito: TPanel;
+    imgDebito: TImage;
+    pnlCredito: TPanel;
+    shapeCredito: TShape;
+    pnlContainerCredito: TPanel;
+    pnlTitleCredito: TPanel;
+    pnlImgCredito: TPanel;
+    imgCredito: TImage;
+    pnlBandeiras: TPanel;
+    pnlMasterCard: TPanel;
+    shapeMasterCard: TShape;
+    pnlContainerMasterCard: TPanel;
+    imgMasterCard: TImage;
+    pnlVisa: TPanel;
+    shpVisa: TShape;
+    pnContainerVisa: TPanel;
+    imgVisa: TImage;
+    pnlCartaoDinnersClub: TPanel;
+    shpDinnersClub: TShape;
+    pnlContainerDinnersClub: TPanel;
+    imgDinnersClub: TImage;
+    pnlCartaoAmericanExpress: TPanel;
+    shpAmericanExpress: TShape;
+    pnlContainerAmericanExpress: TPanel;
+    imgAmericanExpress: TImage;
+    procedure pnlImgDebitoClick(Sender: TObject);
+    procedure pnlImgCreditoClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure SetClick(Shape: TShape; Panel: TPanel);
+  public
+    { Public declarations }
+    class function New(AOwner : TComponent): TframeCartao;
+    function Alinhamento(Value : TAlign) : TFrameCartao;
+    function Embed(Value : TWinControl) : TFrameCartao;
+  end;
+
+implementation
+
+{$R *.dfm}
+
+{ TframeCartao }
+
+function TframeCartao.Alinhamento(Value: TAlign): TFrameCartao;
+begin
+  Result := Self;
+  self.Align := Value;
+end;
+
+function TframeCartao.Embed(Value: TWinControl): TFrameCartao;
+begin
+  Result := Self;
+  Self.Parent := Value;
+end;
+
+class function TframeCartao.New(AOwner: TComponent): TframeCartao;
+begin
+  Result := Self.Create(AOwner);
+end;
+
+procedure TframeCartao.pnlImgCreditoClick(Sender: TObject);
+begin
+  SetClick(shapeCredito, pnlTipoCartao);
+end;
+
+procedure TframeCartao.pnlImgDebitoClick(Sender: TObject);
+begin
+  SetClick(shapeDebito, pnlTipoCartao);
+end;
+
+procedure TframeCartao.SetClick(Shape: TShape; Panel: TPanel);
+begin
+  shapeDebito.Pen.Style := psClear;
+  shapeCredito.Pen.Style      := psClear;
+  shapeDebito.Pen.Color := clWhite;
+  shapeCredito.Pen.Color := clWhite;
+
+  shapeMasterCard.Pen.Style := psClear;
+  shpVisa.Pen.Style := psClear;
+  shpDinnersClub.Pen.Style := psClear;
+  shpAmericanExpress.Pen.Style := psClear;
+
+  shapeMasterCard.Pen.Color := clWhite;
+  shpVisa.Pen.Color := clWhite;
+  shpDinnersClub.Pen.Color := clWhite;
+  shpAmericanExpress.Pen.Color := clWhite;
+
+
+  Shape.Pen.Style := psSolid;
+  Shape.Pen.Color := $0014B4E1;
+
+  Panel.Visible := False;
+  Panel.Visible := True;
+end;
+
+end.

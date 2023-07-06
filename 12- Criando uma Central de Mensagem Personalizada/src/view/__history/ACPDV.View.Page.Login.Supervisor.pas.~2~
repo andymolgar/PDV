@@ -1,0 +1,42 @@
+unit ACPDV.View.Page.Login.Supervisor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TpageLoginSupervisor = class(TForm)
+    pnlContainer: TPanel;
+    pnlLogar: TPanel;
+    pnlTitleLogin: TPanel;
+    pnlUsuario: TPanel;
+    lbl1: TLabel;
+    shpUsuario: TShape;
+    edtUsuario: TEdit;
+    pnlSenha: TPanel;
+    lbl11: TLabel;
+    shpSenha: TShape;
+    edtSenha: TEdit;
+    pnlContainerBotao: TPanel;
+    pnlBotaoLogar: TPanel;
+    shpBotaoLogar: TShape;
+    btnPermitir: TSpeedButton;
+    Panel2: TPanel;
+    Shape1: TShape;
+    btnCancelar: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  pageLoginSupervisor: TpageLoginSupervisor;
+
+implementation
+
+{$R *.dfm}
+
+end.
