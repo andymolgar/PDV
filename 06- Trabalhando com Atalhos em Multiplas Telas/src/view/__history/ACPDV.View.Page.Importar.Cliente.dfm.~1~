@@ -1,0 +1,52 @@
+object pageImportarCliente: TpageImportarCliente
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'pageImportarCliente'
+  ClientHeight = 740
+  ClientWidth = 1144
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlContainer: TPanel
+    Left = 0
+    Top = 0
+    Width = 1144
+    Height = 740
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 48
+    ExplicitTop = 88
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object pnlTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 1144
+      Height = 60
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 0
+    end
+    object pnlInfo: TPanel
+      Left = 0
+      Top = 60
+      Width = 1144
+      Height = 680
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 48
+      ExplicitTop = 88
+      ExplicitWidth = 185
+      ExplicitHeight = 41
+    end
+  end
+end

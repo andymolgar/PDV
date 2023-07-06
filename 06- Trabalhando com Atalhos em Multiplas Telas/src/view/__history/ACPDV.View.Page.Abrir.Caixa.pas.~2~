@@ -1,0 +1,57 @@
+unit ACPDV.View.Page.Abrir.Caixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    pnlContainer: TPanel;
+    pnlTitulo: TPanel;
+    pnl1: TPanel;
+    pnlPrincipal: TPanel;
+    pnl2: TPanel;
+    pnl3: TPanel;
+    pnl4: TPanel;
+    pnl5: TPanel;
+    pnl6: TPanel;
+    shp1: TShape;
+    edtValorSuprimento: TEdit;
+    shp2: TShape;
+    btn1: TSpeedButton;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    procedure Responsive;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  Responsive;
+end;
+
+procedure TForm1.Responsive;
+begin
+  pnlContainer.Margins.Left  := Round((Self.Width - pnlContainer.Width) / 2);
+  pnlContainer.Margins.Right := Round((Self.Width - pnlContainer.Width) / 2);
+
+  pnlContainer.Margins.Top    := Round((Self.Height - pnlContainer.Height) / 2);
+  pnlContainer.Margins.Bottom := Round((Self.Height - pnlContainer.Height) / 2);
+
+  pnlContainer.Align := alClient;
+end;
+
+end.
