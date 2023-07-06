@@ -1,0 +1,37 @@
+unit ACPDV.View.Page.Pagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage;
+
+type
+  TpagePagamentos = class(TForm)
+    pnlContainer: TPanel;
+    pnlInformacoes: TPanel;
+    pnlformasPagamento: TPanel;
+    pnlInformarCpf: TPanel;
+    pnlInfoVenda: TPanel;
+    pnlCancelarRetornar: TPanel;
+    pnlEdit: TPanel;
+    imgEdit: TImage;
+    lblEdit: TLabel;
+    pnlTotalVenda: TPanel;
+    lblTitleTotalVenda: TLabel;
+    lblTotalVenda: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  pagePagamentos: TpagePagamentos;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,41 @@
+object dmDados: TdmDados
+  OldCreateOrder = False
+  Height = 296
+  Width = 369
+  object cdsItens: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 64
+    Top = 24
+    object cdsItenscodigo: TStringField
+      FieldName = 'codigo'
+      Size = 100
+    end
+    object cdsItensitem: TIntegerField
+      FieldName = 'item'
+    end
+    object cdsItensdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
+    object cdsItensvalorunitario: TCurrencyField
+      FieldName = 'valorunitario'
+      EditFormat = 'R$ #.##0,00'
+    end
+    object cdsItensquantidade: TCurrencyField
+      FieldName = 'quantidade'
+      DisplayFormat = '0.000'
+    end
+    object cdsItenssubtotal: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'subtotal'
+      EditFormat = 'R$ #.##0,00'
+      Calculated = True
+    end
+    object cdsItenstotalcompra: TAggregateField
+      FieldName = 'totalcompra'
+      DisplayName = ''
+      Expression = 'sum(valorunitario * quantidade)'
+    end
+  end
+end

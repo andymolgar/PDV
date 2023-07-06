@@ -1,0 +1,16 @@
+program ACPDV;
+
+uses
+  Vcl.Forms,
+  ACPDV.View.Principal in 'src\view\ACPDV.View.Principal.pas' {pagePrincipal},
+  ACPDV.View.Page.Login in 'src\view\ACPDV.View.Page.Login.pas' {pageLogin};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TpagePrincipal, pagePrincipal);
+  Application.CreateForm(TpageLogin, pageLogin);
+  Application.Run;
+end.
