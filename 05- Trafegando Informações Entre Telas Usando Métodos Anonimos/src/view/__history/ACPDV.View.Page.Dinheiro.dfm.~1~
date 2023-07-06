@@ -1,0 +1,7 @@
+object frameDinheiro: TframeDinheiro
+  Left = 0
+  Top = 0
+  Width = 507
+  Height = 334
+  TabOrder = 0
+end

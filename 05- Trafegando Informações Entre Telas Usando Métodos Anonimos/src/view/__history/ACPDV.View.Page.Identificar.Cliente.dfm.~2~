@@ -1,0 +1,29 @@
+object pageIdentificarCliente: TpageIdentificarCliente
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  AlphaBlendValue = 230
+  BorderStyle = bsNone
+  Caption = 'pageIdentificarCliente'
+  ClientHeight = 740
+  ClientWidth = 1144
+  Color = clBackground
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnl: TPanel
+    Left = 96
+    Top = 152
+    Width = 450
+    Height = 200
+    BevelOuter = bvNone
+    Color = 16512247
+    ParentBackground = False
+    TabOrder = 0
+  end
+end
