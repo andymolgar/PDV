@@ -1,0 +1,63 @@
+unit ACPDV.View.Page.Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
+  Vcl.Buttons, Vcl.StdCtrls;
+
+type
+  TpageLogin = class(TForm)
+    pnlContainer: TPanel;
+    pnlLogin: TPanel;
+    pnlImage: TPanel;
+    pnlLogar: TPanel;
+    pnlTitleLogin: TPanel;
+    pnlUsuario: TPanel;
+    lbl1: TLabel;
+    shpUsuario: TShape;
+    edtUsuario: TEdit;
+    pnlSenha: TPanel;
+    lbl11: TLabel;
+    shpSenha: TShape;
+    edtSenha: TEdit;
+    pnlContainerBotao: TPanel;
+    pnlBotaoLogar: TPanel;
+    shpBotaoLogar: TShape;
+    btnLogar: TSpeedButton;
+    Image: TImage;
+    procedure btnLogarClick(Sender: TObject);
+    procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  pageLogin: TpageLogin;
+
+implementation
+
+{$R *.dfm}
+
+procedure TpageLogin.btnLogarClick(Sender: TObject);
+begin
+  if not ( (edtUsuario.Text = 'Anderson') and (edtSenha.Text = '123') ) then
+  begin
+    ShowMessage('Login e senha inválido');
+    Exit;
+  end;
+
+  Close;
+
+end;
+
+procedure TpageLogin.edtSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    btnLogarClick(Sender);
+end;
+
+end.
